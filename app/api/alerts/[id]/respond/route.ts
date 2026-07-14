@@ -3,12 +3,12 @@ import { prisma } from "@/lib/prisma";
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const body = await request.json();
     const { userId } = body;
-    const alertId = params.id;
+    const { id: alertId } = await params;
 
     if (!userId) {
       return NextResponse.json(
