@@ -198,7 +198,7 @@ export default function AlertsPage() {
           <Card key={alert.id} className="border-destructive/50">
             <CardContent className="p-6">
               <div className="flex items-start justify-between">
-                <div className="space-y-4">
+                <div className="space-y-[5px]">
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-xl bg-destructive/10">
                       <AlertTriangle className="h-5 w-5 text-destructive" />

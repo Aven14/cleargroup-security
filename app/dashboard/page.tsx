@@ -124,7 +124,7 @@ export default function DashboardPage() {
                   key={debriefing.id}
                   className="flex items-start justify-between p-4 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors"
                 >
-                  <div className="space-y-1">
+                  <div className="space-y-[5px]">
                     <p className="font-medium">{debriefing.title}</p>
                     <p className="text-sm text-gray-600">
                       Par {debriefing.author}
