@@ -4,9 +4,9 @@ import { prisma } from "@/lib/prisma";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { userId, firstName, lastName, reason, location, notes } = body;
+    const { userId, firstName, lastName, reason } = body;
 
-    if (!userId || !firstName || !lastName || !reason || !location) {
+    if (!userId || !firstName || !lastName || !reason) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -20,10 +20,9 @@ export async function POST(request: Request) {
         firstName,
         lastName,
         reason,
-        location,
-        notes,
         status: "IN_CUSTODY",
-        detainedAt: new Date(),
+        entryTime: new Date(),
+        detentionDuration: 0,
       },
       include: {
         user: {
@@ -81,7 +80,7 @@ export async function GET(request: Request) {
         },
       },
       orderBy: {
-        detainedAt: "desc",
+        entryTime: "desc",
       },
     });
 

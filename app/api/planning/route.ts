@@ -7,15 +7,14 @@ export async function POST(request: Request) {
     const { 
       userId, 
       title, 
-      date, 
       startTime, 
       endTime, 
       location, 
-      assignedUnit, 
+      assignedUnits, 
       description 
     } = body;
 
-    if (!userId || !title || !date || !startTime || !endTime || !location || !assignedUnit) {
+    if (!userId || !title || !startTime || !endTime || !location || !assignedUnits) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -27,11 +26,10 @@ export async function POST(request: Request) {
       data: {
         userId,
         title,
-        date: new Date(date),
         startTime,
         endTime,
         location,
-        assignedUnit,
+        assignedUnits,
         description,
       },
       include: {
@@ -68,7 +66,7 @@ export async function GET(request: Request) {
       where.userId = userId;
     }
     if (fromDate) {
-      where.date = {
+      where.startTime = {
         gte: new Date(fromDate),
       };
     }
@@ -84,7 +82,7 @@ export async function GET(request: Request) {
         },
       },
       orderBy: {
-        date: "asc",
+        startTime: "asc",
       },
     });
 

@@ -8,8 +8,9 @@ export const authConfig = {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
+  providers: [],
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
+    authorized({ auth, request: { nextUrl } }: { auth: any; request: { nextUrl: URL } }) {
       const isLoggedIn = !!auth?.user;
       const isOnAuthPage = nextUrl.pathname.startsWith("/auth");
       

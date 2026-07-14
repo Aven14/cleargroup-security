@@ -22,8 +22,7 @@ export async function POST(
       where: { id: detainedPersonId },
       data: {
         status: "RELEASED",
-        releasedAt: new Date(),
-        releasedBy: userId,
+        releaseTime: new Date(),
       },
     });
 
