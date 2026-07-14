@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String    @id @default(cuid())
+  email             String    @unique
+  password          String
+  firstName         String
+  lastName          String
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  // Relations
+  dutySessions      DutySession[]
+  patrols           Patrol[]
+  patrolPartners    Patrol[]  @relation("PatrolPartner")
+  alerts            Alert[]
+  interventionReports InterventionReport[]
+  detainedPersons   DetainedPerson[]
+  planningEvents    PlanningEvent[]
+
+  // Future: grades, matricules, permissions
+  // gradeId           String?
+  // matricule         String?
+  // permissions       String[]
+}
+
+model DutySession {
+  id                String    @id @default(cuid())
+  userId            String
+  user              User      @relation(fields: [userId], references: [id])
+  startTime         DateTime  @default(now())
+  endTime           DateTime?
+  isActive          Boolean   @default(true)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model Patrol {
+  id                String    @id @default(cuid())
+  userId            String
+  user              User      @relation(fields: [userId], references: [id])
+  sector            String
+  startTime         DateTime  @default(now())
+  endTime           DateTime?
+  vehicle           String?
+  partnerId         String?
+  partner           User?     @relation("PatrolPartner", fields: [partnerId], references: [id])
+  type              String    @default("MOBILE") // MOBILE, INTERVENTION, ESCORTE, EVENT
+  observations      String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model Alert {
+  id                String    @id @default(cuid())
+  userId            String
+  user              User      @relation(fields: [userId], references: [id])
+  type              String // URGENT_INTERVENTION, ESCORTE, EVENT, SHORT_STAFFED
+  description       String
+  location          String?
+  status            String    @default("ACTIVE") // ACTIVE, IN_PROGRESS, RESOLVED
+  respondedBy       String?
+  respondedAt       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model InterventionReport {
+  id                String    @id @default(cuid())
+  userId            String
+  user              User      @relation(fields: [userId], references: [id])
+  title             String
+  date              DateTime  @default(now())
+  location          String
+  agentsPresent     String
+  interventionType  String
+  summary           String
+  progression       String
+  result            String
+  observations      String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model DetainedPerson {
+  id                String    @id @default(cuid())
+  firstName         String
+  lastName          String
+  entryTime         DateTime  @default(now())
+  detentionDuration Int       // in minutes
+  reason            String
+  userId            String
+  user              User      @relation(fields: [userId], references: [id])
+  status            String    @default("IN_CUSTODY") // IN_CUSTODY, RELEASABLE, RELEASED
+  releaseTime       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model PlanningEvent {
+  id                String    @id @default(cuid())
+  title             String
+  description       String?
+  startTime         DateTime
+  endTime           DateTime
+  location          String?
+  assignedUnits     String?
+  userId            String
+  user              User      @relation(fields: [userId], references: [id])
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model Vehicle {
+  id                String    @id @default(cuid())
+  plate             String    @unique
+  model             String
+  type              String // PATROL_CAR, MOTORCYCLE, VAN, SUV
+  status            String    @default("AVAILABLE") // AVAILABLE, IN_USE, MAINTENANCE, OUT_OF_SERVICE
+  currentAssignment String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
