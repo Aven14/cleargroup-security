@@ -115,7 +115,7 @@ export default function DebriefingsPage() {
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
             Débriefings
           </h1>
-          <p className="text-muted-foreground mt-2">
+          <p className="text-gray-600 mt-2">
             Rédigez et consultez les rapports d'intervention
           </p>
         </div>
@@ -261,15 +261,15 @@ export default function DebriefingsPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold">{debriefing.title}</h3>
-                      <p className="text-sm text-muted-foreground">Par {debriefing.author}</p>
+                      <p className="text-sm text-gray-600">Par {debriefing.author}</p>
                     </div>
                   </div>
-                  <p className="text-sm">{debriefing.summary}</p>
+                  <p className="text-sm text-gray-700">{debriefing.summary}</p>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">{debriefing.interventionType}</Badge>
                     <Badge variant="secondary">{debriefing.result}</Badge>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       <span>{format(debriefing.date, "dd MMMM yyyy", { locale: fr })}</span>

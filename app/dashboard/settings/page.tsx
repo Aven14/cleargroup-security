@@ -17,7 +17,7 @@ export default function SettingsPage() {
         <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
           Paramètres
         </h1>
-        <p className="text-muted-foreground mt-2">
+        <p className="text-gray-600 mt-2">
           Gérez votre compte et vos préférences
         </p>
       </div>
@@ -55,7 +55,7 @@ export default function SettingsPage() {
                 />
               </div>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-600">
               Pour modifier vos informations personnelles, veuillez contacter l'administrateur.
             </p>
           </div>
@@ -97,7 +97,7 @@ export default function SettingsPage() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-600">
               Configurez vos préférences de notification.
             </p>
             <div className="flex items-center justify-between">
@@ -126,7 +126,7 @@ export default function SettingsPage() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-600">
               Actions irréversibles sur votre compte.
             </p>
             <Button
@@ -145,8 +145,8 @@ export default function SettingsPage() {
         <CardContent className="p-6">
           <div className="text-center space-y-2">
             <h3 className="font-semibold">ClearSecurity</h3>
-            <p className="text-sm text-muted-foreground">Version 1.0.0</p>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-sm text-gray-600">Version 1.0.0</p>
+            <p className="text-xs text-gray-500">
               © 2024 ClearGroup. Tous droits réservés.
             </p>
           </div>

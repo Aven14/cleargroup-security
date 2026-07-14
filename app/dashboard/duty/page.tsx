@@ -87,7 +87,7 @@ export default function DutyPage() {
         <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
           Prise de service
         </h1>
-        <p className="text-muted-foreground mt-2">
+        <p className="text-gray-600 mt-2">
           Gérez vos horaires de service
         </p>
       </div>
@@ -103,17 +103,17 @@ export default function DutyPage() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="space-y-1">
-              <p className="text-sm text-muted-foreground">Nom</p>
+              <p className="text-sm text-gray-600">Nom</p>
               <p className="font-semibold">
                 {session?.user?.lastName} {session?.user?.firstName}
               </p>
             </div>
             <div className="space-y-1">
-              <p className="text-sm text-muted-foreground">Email</p>
+              <p className="text-sm text-gray-600">Email</p>
               <p className="font-semibold">{session?.user?.email}</p>
             </div>
             <div className="space-y-1">
-              <p className="text-sm text-muted-foreground">Date</p>
+              <p className="text-sm text-gray-600">Date</p>
               <p className="font-semibold">
                 {format(new Date(), "dd MMMM yyyy", { locale: fr })}
               </p>
@@ -136,7 +136,7 @@ export default function DutyPage() {
               {isOnDuty ? "EN SERVICE" : "HORS SERVICE"}
             </h2>
             {isOnDuty && dutyStartTime && (
-              <div className="flex items-center justify-center gap-2 text-muted-foreground">
+              <div className="flex items-center justify-center gap-2 text-gray-600">
                 <Clock className="h-4 w-4" />
                 <span>
                   Depuis {format(dutyStartTime, "HH:mm", { locale: fr })}
@@ -188,7 +188,7 @@ export default function DutyPage() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground text-center py-8">
+          <p className="text-gray-500 text-center py-8">
             L'historique des services sera affiché ici une fois la base de données connectée.
           </p>
         </CardContent>

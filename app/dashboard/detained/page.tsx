@@ -135,7 +135,7 @@ export default function DetainedPage() {
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
             Personnes détenues
           </h1>
-          <p className="text-muted-foreground mt-2">
+          <p className="text-gray-600 mt-2">
             Gérez les personnes en garde à vue
           </p>
         </div>
@@ -244,13 +244,13 @@ export default function DetainedPage() {
                       <h3 className="font-semibold">
                         {person.firstName} {person.lastName}
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-gray-600">
                         Détenu par {person.detainedBy}
                       </p>
                     </div>
                   </div>
-                  <p className="text-sm">{person.reason}</p>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-700">{person.reason}</p>
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
                     <div className="flex items-center gap-1">
                       <MapPin className="h-4 w-4" />
                       <span>{person.location}</span>
@@ -279,7 +279,7 @@ export default function DetainedPage() {
           <CardTitle>Personnes libérées</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground text-center py-8">
+          <p className="text-gray-500 text-center py-8">
             L'historique des personnes libérées sera affiché ici une fois la base de données connectée.
           </p>
         </CardContent>

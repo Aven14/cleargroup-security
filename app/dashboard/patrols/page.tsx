@@ -95,7 +95,7 @@ export default function PatrolsPage() {
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
             Patrouilles
           </h1>
-          <p className="text-muted-foreground mt-2">
+          <p className="text-gray-600 mt-2">
             Gérez les patrouilles en cours
           </p>
         </div>
@@ -193,14 +193,14 @@ export default function PatrolsPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold">{patrol.agent}</h3>
-                      <p className="text-sm text-muted-foreground">{patrol.sector}</p>
+                      <p className="text-sm text-gray-600">{patrol.sector}</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">{patrol.type}</Badge>
                     <Badge variant="secondary">{patrol.vehicle}</Badge>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
                     <div className="flex items-center gap-1">
                       <Clock className="h-4 w-4" />
                       <span>
@@ -228,7 +228,7 @@ export default function PatrolsPage() {
           <CardTitle>Historique des patrouilles</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground text-center py-8">
+          <p className="text-gray-500 text-center py-8">
             L'historique des patrouilles sera affiché ici une fois la base de données connectée.
           </p>
         </CardContent>

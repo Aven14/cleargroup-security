@@ -83,7 +83,7 @@ export default function DashboardPage() {
         <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
           Tableau de bord
         </h1>
-        <p className="text-muted-foreground mt-2">
+        <p className="text-gray-600 mt-2">
           Vue d'ensemble des opérations de sécurité
         </p>
       </div>
@@ -93,7 +93,7 @@ export default function DashboardPage() {
         {stats.map((stat) => (
           <Card key={stat.title}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
+              <CardTitle className="text-sm font-medium text-gray-600">
                 {stat.title}
               </CardTitle>
               <div className={`p-2 rounded-xl ${stat.bgColor}`}>
@@ -126,13 +126,13 @@ export default function DashboardPage() {
                 >
                   <div className="space-y-1">
                     <p className="font-medium">{debriefing.title}</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-gray-600">
                       Par {debriefing.author}
                     </p>
                   </div>
                   <div className="flex flex-col items-end gap-2">
                     <Badge variant="outline">{debriefing.type}</Badge>
-                    <p className="text-xs text-muted-foreground">{debriefing.date}</p>
+                    <p className="text-xs text-gray-500">{debriefing.date}</p>
                   </div>
                 </div>
               ))}
@@ -157,11 +157,11 @@ export default function DashboardPage() {
                 >
                   <div className="space-y-1">
                     <p className="font-medium text-destructive">{alert.type}</p>
-                    <p className="text-sm text-muted-foreground">{alert.location}</p>
+                    <p className="text-sm text-gray-600">{alert.location}</p>
                   </div>
                   <div className="flex flex-col items-end gap-2">
                     <Badge variant="destructive">{alert.status}</Badge>
-                    <p className="text-xs text-muted-foreground flex items-center gap-1">
+                    <p className="text-xs text-gray-500 flex items-center gap-1">
                       <Clock className="h-3 w-3" />
                       {alert.time}
                     </p>
@@ -195,7 +195,7 @@ export default function DashboardPage() {
                 className="flex items-center justify-between p-3 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors"
               >
                 <p className="text-sm">{activity.action}</p>
-                <p className="text-xs text-muted-foreground">{activity.time}</p>
+                <p className="text-xs text-gray-500">{activity.time}</p>
               </div>
             ))}
           </div>

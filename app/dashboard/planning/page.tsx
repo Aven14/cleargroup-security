@@ -112,7 +112,7 @@ export default function PlanningPage() {
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
             Planning
           </h1>
-          <p className="text-muted-foreground mt-2">
+          <p className="text-gray-600 mt-2">
             Gérez le calendrier des opérations et événements
           </p>
         </div>
@@ -227,14 +227,14 @@ export default function PlanningPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold">{event.title}</h3>
-                      <p className="text-sm text-muted-foreground">Créé par {event.createdBy}</p>
+                      <p className="text-sm text-gray-600">Créé par {event.createdBy}</p>
                     </div>
                   </div>
-                  <p className="text-sm">{event.description}</p>
+                  <p className="text-sm text-gray-700">{event.description}</p>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">{event.assignedUnit}</Badge>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       <span>{format(event.date, "dd MMMM yyyy", { locale: fr })}</span>
@@ -264,7 +264,7 @@ export default function PlanningPage() {
           <CardTitle>Événements passés</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground text-center py-8">
+          <p className="text-gray-500 text-center py-8">
             L'historique des événements passés sera affiché ici une fois la base de données connectée.
           </p>
         </CardContent>

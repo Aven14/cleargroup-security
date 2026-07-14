@@ -93,7 +93,7 @@ export default function AgentsPage() {
         <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
           Agents
         </h1>
-        <p className="text-muted-foreground mt-2">
+        <p className="text-gray-600 mt-2">
           Liste des agents et leurs statistiques
         </p>
       </div>
@@ -119,7 +119,7 @@ export default function AgentsPage() {
               </div>
               <div>
                 <p className="text-2xl font-bold">{agents.length}</p>
-                <p className="text-sm text-muted-foreground">Total agents</p>
+                <p className="text-sm text-gray-600">Total agents</p>
               </div>
             </div>
           </CardContent>
@@ -132,7 +132,7 @@ export default function AgentsPage() {
               </div>
               <div>
                 <p className="text-2xl font-bold">{agents.filter(a => a.status === "ON_DUTY").length}</p>
-                <p className="text-sm text-muted-foreground">En service</p>
+                <p className="text-sm text-gray-600">En service</p>
               </div>
             </div>
           </CardContent>
@@ -145,7 +145,7 @@ export default function AgentsPage() {
               </div>
               <div>
                 <p className="text-2xl font-bold">{agents.reduce((sum, a) => sum + a.patrolCount, 0)}</p>
-                <p className="text-sm text-muted-foreground">Total patrouilles</p>
+                <p className="text-sm text-gray-600">Total patrouilles</p>
               </div>
             </div>
           </CardContent>
@@ -158,7 +158,7 @@ export default function AgentsPage() {
               </div>
               <div>
                 <p className="text-2xl font-bold">{agents.reduce((sum, a) => sum + a.reportCount, 0)}</p>
-                <p className="text-sm text-muted-foreground">Total rapports</p>
+                <p className="text-sm text-gray-600">Total rapports</p>
               </div>
             </div>
           </CardContent>
@@ -183,28 +183,28 @@ export default function AgentsPage() {
                       <h3 className="font-semibold">
                         {agent.firstName} {agent.lastName}
                       </h3>
-                      <p className="text-sm text-muted-foreground">{agent.email}</p>
+                      <p className="text-sm text-gray-600">{agent.email}</p>
                     </div>
                   </div>
                   <Badge variant={getStatusColor(agent.status) as any}>{agent.status}</Badge>
                 </div>
                 <div className="grid grid-cols-3 gap-8 text-center">
                   <div className="space-y-1">
-                    <div className="flex items-center justify-center gap-1 text-muted-foreground">
+                    <div className="flex items-center justify-center gap-1 text-gray-600">
                       <Clock className="h-4 w-4" />
                       <span className="text-xs">Temps de service</span>
                     </div>
                     <p className="font-semibold">{formatDutyTime(agent.totalDutyTime)}</p>
                   </div>
                   <div className="space-y-1">
-                    <div className="flex items-center justify-center gap-1 text-muted-foreground">
+                    <div className="flex items-center justify-center gap-1 text-gray-600">
                       <Car className="h-4 w-4" />
                       <span className="text-xs">Patrouilles</span>
                     </div>
                     <p className="font-semibold">{agent.patrolCount}</p>
                   </div>
                   <div className="space-y-1">
-                    <div className="flex items-center justify-center gap-1 text-muted-foreground">
+                    <div className="flex items-center justify-center gap-1 text-gray-600">
                       <FileText className="h-4 w-4" />
                       <span className="text-xs">Rapports</span>
                     </div>

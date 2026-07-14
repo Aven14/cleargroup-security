@@ -122,7 +122,7 @@ export default function AlertsPage() {
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
             Alertes
           </h1>
-          <p className="text-muted-foreground mt-2">
+          <p className="text-gray-600 mt-2">
             Demandez de l'aide ou répondez aux alertes en cours
           </p>
         </div>
@@ -205,11 +205,11 @@ export default function AlertsPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold">{alert.type}</h3>
-                      <p className="text-sm text-muted-foreground">Par {alert.agent}</p>
+                      <p className="text-sm text-gray-600">Par {alert.agent}</p>
                     </div>
                   </div>
-                  <p className="text-sm">{alert.description}</p>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-700">{alert.description}</p>
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
                     <div className="flex items-center gap-1">
                       <MapPin className="h-4 w-4" />
                       <span>{alert.location}</span>
@@ -241,7 +241,7 @@ export default function AlertsPage() {
           <CardTitle>Alertes résolues</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground text-center py-8">
+          <p className="text-gray-500 text-center py-8">
             L'historique des alertes résolues sera affiché ici une fois la base de données connectée.
           </p>
         </CardContent>
