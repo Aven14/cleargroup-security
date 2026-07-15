@@ -11,6 +11,13 @@
   --color-background: #f8fafc;
   --color-surface: #ffffff;
   --color-ink: #0f172a;
+  --color-foreground: #0f172a;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-ring: #3b82f6;
   --color-muted: #64748b;
   --color-muted-foreground: #94a3b8;
   --color-border: #e2e8f0;
@@ -36,6 +43,7 @@ body {
 
 body {
   background: linear-gradient(135deg, #e8ecf0 0%, #e2e6ea 50%, #d8dce0 100%);
+  color: var(--color-ink);
   font-family: var(--font-jakarta), system-ui, sans-serif;
 }
 

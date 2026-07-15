@@ -77,7 +77,7 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-[5px]">
       {/* Header */}
       <div>
         <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
@@ -89,7 +89,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[5px]">
         {stats.map((stat) => (
           <Card key={stat.title}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -108,17 +108,17 @@ export default function DashboardPage() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[5px]">
         {/* Recent Debriefings */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-[5px]">
               <FileText className="h-5 w-5" />
               Débriefings récents
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-[5px]">
               {recentDebriefings.map((debriefing) => (
                 <div
                   key={debriefing.id}
@@ -130,7 +130,7 @@ export default function DashboardPage() {
                       Par {debriefing.author}
                     </p>
                   </div>
-                  <div className="flex flex-col items-end gap-2">
+                  <div className="flex flex-col items-end gap-[5px]">
                     <Badge variant="outline">{debriefing.type}</Badge>
                     <p className="text-xs text-gray-500">{debriefing.date}</p>
                   </div>
@@ -143,25 +143,25 @@ export default function DashboardPage() {
         {/* Active Alerts */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-[5px]">
               <AlertTriangle className="h-5 w-5 text-destructive" />
               Alertes actives
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-[5px]">
               {activeAlerts.map((alert) => (
                 <div
                   key={alert.id}
                   className="flex items-start justify-between p-4 rounded-xl bg-destructive/10 hover:bg-destructive/20 transition-colors"
                 >
-                  <div className="space-y-1">
+                  <div className="space-y-[5px]">
                     <p className="font-medium text-destructive">{alert.type}</p>
                     <p className="text-sm text-gray-600">{alert.location}</p>
                   </div>
-                  <div className="flex flex-col items-end gap-2">
+                  <div className="flex flex-col items-end gap-[5px]">
                     <Badge variant="destructive">{alert.status}</Badge>
-                    <p className="text-xs text-gray-500 flex items-center gap-1">
+                    <p className="text-xs text-gray-500 flex items-center gap-[5px]">
                       <Clock className="h-3 w-3" />
                       {alert.time}
                     </p>
@@ -176,13 +176,13 @@ export default function DashboardPage() {
       {/* Activity Feed */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-[5px]">
             <Users className="h-5 w-5" />
             Activité récente
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="space-y-[5px]">
             {[
               { action: "Jean Dupont a commencé son service", time: "Il y a 5 min" },
               { action: "Marie Martin a créé une patrouille", time: "Il y a 15 min" },

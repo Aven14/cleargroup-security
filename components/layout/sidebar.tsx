@@ -39,7 +39,7 @@ export function Sidebar() {
       <div className="flex h-full flex-col">
         {/* Logo */}
         <div className="flex h-16 items-center border-b border-border/20 px-6">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-[5px]">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-dark">
               <Shield className="h-6 w-6 text-white" />
             </div>
@@ -61,7 +61,7 @@ export function Sidebar() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
+                  "flex items-center gap-[5px] rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
                   isActive
                     ? "bg-primary text-white shadow-md"
                     : "text-muted-foreground hover:bg-accent/10 hover:text-accent"
@@ -78,7 +78,7 @@ export function Sidebar() {
         <div className="border-t border-border/20 p-4">
           {session?.user && (
             <div className="mb-3 rounded-xl bg-muted/30 p-3">
-              <p className="text-sm font-medium text-foreground">
+              <p className="text-sm font-medium text-ink">
                 {session.user.firstName} {session.user.lastName}
               </p>
               <p className="text-xs text-muted-foreground">{session.user.email}</p>
@@ -86,7 +86,7 @@ export function Sidebar() {
           )}
           <button
             onClick={() => signOut({ callbackUrl: "/auth/login" })}
-            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-destructive hover:bg-destructive/10 transition-all duration-200"
+            className="flex w-full items-center gap-[5px] rounded-xl px-3 py-2.5 text-sm font-medium text-destructive hover:bg-destructive/10 transition-all duration-200"
           >
             <LogOut className="h-5 w-5" />
             Déconnexion

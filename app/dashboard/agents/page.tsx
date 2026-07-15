@@ -87,7 +87,7 @@ export default function AgentsPage() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-[5px]">
       {/* Header */}
       <div>
         <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
@@ -110,10 +110,10 @@ export default function AgentsPage() {
       </div>
 
       {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-[5px]">
         <Card>
           <CardContent className="p-6">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-[5px]">
               <div className="p-2 rounded-xl bg-primary/10">
                 <Users className="h-5 w-5 text-primary" />
               </div>
@@ -126,7 +126,7 @@ export default function AgentsPage() {
         </Card>
         <Card>
           <CardContent className="p-6">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-[5px]">
               <div className="p-2 rounded-xl bg-success/10">
                 <Shield className="h-5 w-5 text-success" />
               </div>
@@ -139,7 +139,7 @@ export default function AgentsPage() {
         </Card>
         <Card>
           <CardContent className="p-6">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-[5px]">
               <div className="p-2 rounded-xl bg-accent/10">
                 <Car className="h-5 w-5 text-accent" />
               </div>
@@ -152,7 +152,7 @@ export default function AgentsPage() {
         </Card>
         <Card>
           <CardContent className="p-6">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-[5px]">
               <div className="p-2 rounded-xl bg-warning/10">
                 <FileText className="h-5 w-5 text-warning" />
               </div>
@@ -166,14 +166,14 @@ export default function AgentsPage() {
       </div>
 
       {/* Agents List */}
-      <div className="space-y-4">
+      <div className="space-y-[5px]">
         <h2 className="text-2xl font-semibold">Liste des agents</h2>
         {filteredAgents.map((agent) => (
           <Card key={agent.id}>
             <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div className="space-y-[5px]">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-[5px]">
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                       <span className="text-lg font-bold text-primary">
                         {agent.firstName[0]}{agent.lastName[0]}

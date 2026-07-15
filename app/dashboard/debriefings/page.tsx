@@ -108,7 +108,7 @@ export default function DebriefingsPage() {
   );
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-[5px]">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -143,9 +143,9 @@ export default function DebriefingsPage() {
             <CardTitle>Rédiger un nouveau rapport</CardTitle>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
+            <form onSubmit={handleSubmit} className="space-y-[5px]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-[5px]">
+                <div className="space-y-[5px]">
                   <label className="text-sm font-medium">Titre</label>
                   <Input
                     placeholder="Ex: Intervention Centre-Ville"
@@ -154,7 +154,7 @@ export default function DebriefingsPage() {
                     required
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-[5px]">
                   <label className="text-sm font-medium">Date</label>
                   <Input
                     type="date"
@@ -163,7 +163,7 @@ export default function DebriefingsPage() {
                     required
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-[5px]">
                   <label className="text-sm font-medium">Lieu</label>
                   <Input
                     placeholder="Ex: Place de l'Église"
@@ -172,7 +172,7 @@ export default function DebriefingsPage() {
                     required
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-[5px]">
                   <label className="text-sm font-medium">Agents présents</label>
                   <Input
                     placeholder="Ex: Jean Dupont, Marie Martin"
@@ -181,7 +181,7 @@ export default function DebriefingsPage() {
                     required
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-[5px]">
                   <label className="text-sm font-medium">Type d'intervention</label>
                   <Input
                     placeholder="Ex: Intervention, Patrouille, Escorte"
@@ -191,7 +191,7 @@ export default function DebriefingsPage() {
                   />
                 </div>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-[5px]">
                 <label className="text-sm font-medium">Résumé</label>
                 <Textarea
                   placeholder="Résumé de l'intervention..."
@@ -201,7 +201,7 @@ export default function DebriefingsPage() {
                   required
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-[5px]">
                 <label className="text-sm font-medium">Déroulement</label>
                 <Textarea
                   placeholder="Description détaillée du déroulement..."
@@ -211,7 +211,7 @@ export default function DebriefingsPage() {
                   required
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-[5px]">
                 <label className="text-sm font-medium">Résultat</label>
                 <Textarea
                   placeholder="Résultat de l'intervention..."
@@ -221,7 +221,7 @@ export default function DebriefingsPage() {
                   required
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-[5px]">
                 <label className="text-sm font-medium">Observations</label>
                 <Textarea
                   placeholder="Observations supplémentaires..."
@@ -230,7 +230,7 @@ export default function DebriefingsPage() {
                   rows={2}
                 />
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-[5px]">
                 <Button type="submit" disabled={loading}>
                   {loading ? "Création..." : "Créer le rapport"}
                 </Button>
@@ -248,14 +248,14 @@ export default function DebriefingsPage() {
       )}
 
       {/* Debriefings List */}
-      <div className="space-y-4">
+      <div className="space-y-[5px]">
         <h2 className="text-2xl font-semibold">Rapports récents</h2>
         {filteredDebriefings.map((debriefing) => (
           <Card key={debriefing.id}>
             <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div className="space-y-[5px]">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-[5px]">
                     <div className="p-2 rounded-xl bg-primary/10">
                       <FileText className="h-5 w-5 text-primary" />
                     </div>
@@ -265,11 +265,11 @@ export default function DebriefingsPage() {
                     </div>
                   </div>
                   <p className="text-sm text-gray-700">{debriefing.summary}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-[5px]">
                     <Badge variant="outline">{debriefing.interventionType}</Badge>
                     <Badge variant="secondary">{debriefing.result}</Badge>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                  <div className="flex items-center gap-[5px] text-sm text-gray-600">
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       <span>{format(debriefing.date, "dd MMMM yyyy", { locale: fr })}</span>
