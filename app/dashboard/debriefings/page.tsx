@@ -230,8 +230,8 @@ export default function DebriefingsPage() {
                   rows={2}
                 />
               </div>
-              <div className="flex gap-4">
-                <Button type="submit" disabled={loading}>
+              <div className="flex">
+                <Button type="submit" disabled={loading} className="mr-4">
                   {loading ? "Création..." : "Créer le rapport"}
                 </Button>
                 <Button
