@@ -174,8 +174,8 @@ export default function AlertsPage() {
                   required
                 />
               </div>
-              <div className="flex">
-                <Button type="submit" variant="destructive" disabled={loading} className="mr-4">
+              <div className="grid grid-cols-2 gap-4">
+                <Button type="submit" variant="destructive" disabled={loading}>
                   {loading ? "Création..." : "Créer l'alerte"}
                 </Button>
                 <Button

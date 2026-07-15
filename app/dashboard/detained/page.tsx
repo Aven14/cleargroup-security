@@ -211,8 +211,8 @@ export default function DetainedPage() {
                   rows={3}
                 />
               </div>
-              <div className="flex">
-                <Button type="submit" variant="destructive" disabled={loading} className="mr-4">
+              <div className="grid grid-cols-2 gap-4">
+                <Button type="submit" variant="destructive" disabled={loading}>
                   {loading ? "Enregistrement..." : "Enregistrer la détention"}
                 </Button>
                 <Button

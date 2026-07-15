@@ -2,10 +2,10 @@ import { Sidebar } from "./sidebar";
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex">
       <Sidebar />
-      <main className="ml-64 pl-32 pr-8 py-8">
-        <div className="w-full">{children}</div>
+      <main className="flex-1 ml-64 p-8">
+        <div className="max-w-7xl mx-auto pl-8">{children}</div>
       </main>
     </div>
   );

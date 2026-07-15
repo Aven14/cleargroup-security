@@ -196,8 +196,8 @@ export default function PlanningPage() {
                   required
                 />
               </div>
-              <div className="flex">
-                <Button type="submit" disabled={loading} className="mr-4">
+              <div className="grid grid-cols-2 gap-4">
+                <Button type="submit" disabled={loading}>
                   {loading ? "Création..." : "Créer l'événement"}
                 </Button>
                 <Button
