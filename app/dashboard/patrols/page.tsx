@@ -162,7 +162,7 @@ export default function PatrolsPage() {
                   rows={3}
                 />
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-4">
                 <Button type="submit" disabled={loading}>
                   {loading ? "Création..." : "Créer la patrouille"}
                 </Button>
