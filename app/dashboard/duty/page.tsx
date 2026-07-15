@@ -16,17 +16,14 @@ export default function DutyPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Check if user is currently on duty
     checkDutyStatus();
   }, [session]);
 
   const checkDutyStatus = async () => {
     if (!session?.user?.id) return;
-
     try {
       const response = await fetch(`/api/duty/status?userId=${session.user.id}`);
       const data = await response.json();
-      
       if (data.activeSession) {
         setIsOnDuty(true);
         setDutyStartTime(new Date(data.activeSession.startTime));
@@ -38,7 +35,6 @@ export default function DutyPage() {
 
   const startDuty = async () => {
     if (!session?.user?.id) return;
-
     setLoading(true);
     try {
       const response = await fetch("/api/duty/start", {
@@ -46,7 +42,6 @@ export default function DutyPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: session.user.id }),
       });
-
       if (response.ok) {
         setIsOnDuty(true);
         setDutyStartTime(new Date());
@@ -60,7 +55,6 @@ export default function DutyPage() {
 
   const endDuty = async () => {
     if (!session?.user?.id) return;
-
     setLoading(true);
     try {
       const response = await fetch("/api/duty/end", {
@@ -68,7 +62,6 @@ export default function DutyPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: session.user.id }),
       });
-
       if (response.ok) {
         setIsOnDuty(false);
         setDutyStartTime(null);
@@ -81,116 +74,86 @@ export default function DutyPage() {
   };
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
+    <div className="space-y-6">
       <div>
-        <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
-          Prise de service
-        </h1>
-        <p className="text-gray-600 mt-2">
-          Gérez vos horaires de service
-        </p>
+        <h1 className="text-2xl font-bold text-foreground">Prise de service</h1>
+        <p className="text-sm text-muted-foreground mt-1">Gérez vos horaires de service</p>
       </div>
 
-      {/* Agent Info Card */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <User className="h-5 w-5" />
+            <User className="h-4 w-4" />
             Informations agent
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="space-y-1">
-              <p className="text-sm text-gray-600">Nom</p>
-              <p className="font-semibold">
-                {session?.user?.lastName} {session?.user?.firstName}
-              </p>
+            <div>
+              <p className="text-xs text-muted-foreground">Nom</p>
+              <p className="text-sm font-semibold text-foreground">{session?.user?.lastName} {session?.user?.firstName}</p>
             </div>
-            <div className="space-y-1">
-              <p className="text-sm text-gray-600">Email</p>
-              <p className="font-semibold">{session?.user?.email}</p>
+            <div>
+              <p className="text-xs text-muted-foreground">Email</p>
+              <p className="text-sm font-semibold text-foreground">{session?.user?.email}</p>
             </div>
-            <div className="space-y-1">
-              <p className="text-sm text-gray-600">Date</p>
-              <p className="font-semibold">
-                {format(new Date(), "dd MMMM yyyy", { locale: fr })}
-              </p>
+            <div>
+              <p className="text-xs text-muted-foreground">Date</p>
+              <p className="text-sm font-semibold text-foreground">{format(new Date(), "dd MMMM yyyy", { locale: fr })}</p>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      {/* Duty Status Card */}
-      <Card className="min-h-[300px] flex flex-col justify-center items-center">
-        <CardContent className="w-full text-center space-y-8">
-          <div className="flex justify-center">
-            <div className={`p-8 rounded-full ${isOnDuty ? "bg-success/20" : "bg-muted/20"}`}>
-              <Shield className={`h-24 w-24 ${isOnDuty ? "text-success" : "text-muted-foreground"}`} />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold">
-              {isOnDuty ? "EN SERVICE" : "HORS SERVICE"}
-            </h2>
-            {isOnDuty && dutyStartTime && (
-              <div className="flex items-center justify-center gap-2 text-gray-600">
-                <Clock className="h-4 w-4" />
-                <span>
-                  Depuis {format(dutyStartTime, "HH:mm", { locale: fr })}
-                </span>
+      <Card>
+        <CardContent className="p-8 text-center">
+          <div className="space-y-6">
+            <div className="flex justify-center">
+              <div className={`p-6 rounded-full ${isOnDuty ? "bg-success/20" : "bg-muted/20"}`}>
+                <Shield className={`h-16 w-16 ${isOnDuty ? "text-success" : "text-muted-foreground"}`} />
               </div>
-            )}
-          </div>
+            </div>
 
-          <div className="flex justify-center">
-            {isOnDuty ? (
-              <Button
-                onClick={endDuty}
-                variant="destructive"
-                size="xl"
-                disabled={loading}
-                className="min-w-[250px]"
-              >
-                {loading ? "Traitement..." : "🔴 Fin de service"}
-              </Button>
-            ) : (
-              <Button
-                onClick={startDuty}
-                variant="success"
-                size="xl"
-                disabled={loading}
-                className="min-w-[250px]"
-              >
-                {loading ? "Traitement..." : "🟢 Prendre mon service"}
-              </Button>
-            )}
-          </div>
+            <div>
+              <h2 className="text-2xl font-bold text-foreground">{isOnDuty ? "EN SERVICE" : "HORS SERVICE"}</h2>
+              {isOnDuty && dutyStartTime && (
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mt-1">
+                  <Clock className="h-4 w-4" />
+                  <span>Depuis {format(dutyStartTime, "HH:mm", { locale: fr })}</span>
+                </div>
+              )}
+            </div>
 
-          {isOnDuty && (
-            <div className="mt-4">
-              <Badge variant="success" className="text-base px-4 py-2">
+            <div className="flex justify-center">
+              {isOnDuty ? (
+                <Button onClick={endDuty} variant="destructive" disabled={loading} className="min-w-[200px]">
+                  {loading ? "Traitement..." : "🔴 Fin de service"}
+                </Button>
+              ) : (
+                <Button onClick={startDuty} variant="default" disabled={loading} className="min-w-[200px]">
+                  {loading ? "Traitement..." : "🟢 Prendre mon service"}
+                </Button>
+              )}
+            </div>
+
+            {isOnDuty && (
+              <Badge variant="success" className="text-sm px-4 py-1.5">
                 Vous apparaîtrez dans la liste des agents disponibles
               </Badge>
-            </div>
-          )}
+            )}
+          </div>
         </CardContent>
       </Card>
 
-      {/* Recent Sessions */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Calendar className="h-5 w-5" />
+            <Calendar className="h-4 w-4" />
             Historique des services
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-gray-500 text-center py-8">
-            L'historique des services sera affiché ici une fois la base de données connectée.
-          </p>
+          <p className="text-sm text-muted-foreground text-center py-8">L'historique des services sera affiché ici une fois la base de données connectée.</p>
         </CardContent>
       </Card>
     </div>

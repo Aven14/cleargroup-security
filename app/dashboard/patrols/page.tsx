@@ -17,39 +17,21 @@ export default function PatrolsPage() {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [formData, setFormData] = useState({
-    sector: "",
-    vehicle: "",
-    partnerId: "",
-    type: "MOBILE",
-    observations: "",
-  });
+  const [formData, setFormData] = useState({ sector: "", vehicle: "", partnerId: "", type: "MOBILE", observations: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!session?.user?.id) return;
-
     setLoading(true);
     try {
       const response = await fetch("/api/patrols", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          userId: session.user.id,
-        }),
+        body: JSON.stringify({ ...formData, userId: session.user.id }),
       });
-
       if (response.ok) {
         setShowCreateForm(false);
-        setFormData({
-          sector: "",
-          vehicle: "",
-          partnerId: "",
-          type: "MOBILE",
-          observations: "",
-        });
-        // Refresh patrols list
+        setFormData({ sector: "", vehicle: "", partnerId: "", type: "MOBILE", observations: "" });
       }
     } catch (error) {
       console.error("Error creating patrol:", error);
@@ -58,26 +40,9 @@ export default function PatrolsPage() {
     }
   };
 
-  // Mock data - will be replaced with real data from database
   const activePatrols = [
-    {
-      id: 1,
-      agent: "Jean Dupont",
-      sector: "Zone Centre",
-      type: "PATROUILLE MOBILE",
-      vehicle: "V-001",
-      startTime: new Date(Date.now() - 3600000),
-      observations: "RAS",
-    },
-    {
-      id: 2,
-      agent: "Marie Martin",
-      sector: "Zone Nord",
-      type: "INTERVENTION",
-      vehicle: "V-002",
-      startTime: new Date(Date.now() - 7200000),
-      observations: "En cours d'intervention",
-    },
+    { id: 1, agent: "Jean Dupont", sector: "Zone Centre", type: "PATROUILLE MOBILE", vehicle: "V-001", startTime: new Date(Date.now() - 3600000), observations: "RAS" },
+    { id: 2, agent: "Marie Martin", sector: "Zone Nord", type: "INTERVENTION", vehicle: "V-002", startTime: new Date(Date.now() - 7200000), observations: "En cours d'intervention" },
   ];
 
   const patrolTypes = [
@@ -88,149 +53,98 @@ export default function PatrolsPage() {
   ];
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-700 to-accent-500">
-            Patrouilles
-          </h1>
-          <p className="text-gray-600 mt-2">
-            Gérez les patrouilles en cours
-          </p>
+          <h1 className="text-2xl font-bold text-foreground">Patrouilles</h1>
+          <p className="text-sm text-muted-foreground mt-1">Gérez les patrouilles en cours</p>
         </div>
-        <Button onClick={() => setShowCreateForm(!showCreateForm)} size="lg">
-          <Plus className="h-5 w-5 mr-2" />
+        <Button onClick={() => setShowCreateForm(!showCreateForm)}>
+          <Plus className="h-4 w-4 mr-2" />
           Nouvelle patrouille
         </Button>
       </div>
 
-      {/* Create Form */}
       {showCreateForm && (
         <Card>
-          <CardHeader>
-            <CardTitle>Créer une nouvelle patrouille</CardTitle>
-          </CardHeader>
+          <CardHeader><CardTitle>Créer une nouvelle patrouille</CardTitle></CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Secteur</label>
-                  <Input
-                    placeholder="Ex: Zone Centre"
-                    value={formData.sector}
-                    onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
-                    required
-                  />
+                  <label className="text-sm font-medium text-foreground">Secteur</label>
+                  <Input placeholder="Ex: Zone Centre" value={formData.sector} onChange={(e) => setFormData({ ...formData, sector: e.target.value })} required />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Véhicule</label>
-                  <Input
-                    placeholder="Ex: V-001"
-                    value={formData.vehicle}
-                    onChange={(e) => setFormData({ ...formData, vehicle: e.target.value })}
-                  />
+                  <label className="text-sm font-medium text-foreground">Véhicule</label>
+                  <Input placeholder="Ex: V-001" value={formData.vehicle} onChange={(e) => setFormData({ ...formData, vehicle: e.target.value })} />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Type</label>
-                  <Select
-                    value={formData.type}
-                    onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                  >
-                    {patrolTypes.map((type) => (
-                      <option key={type.value} value={type.value}>
-                        {type.label}
-                      </option>
-                    ))}
+                  <label className="text-sm font-medium text-foreground">Type</label>
+                  <Select value={formData.type} onChange={(e) => setFormData({ ...formData, type: e.target.value })}>
+                    {patrolTypes.map((type) => (<option key={type.value} value={type.value}>{type.label}</option>))}
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Coéquipier (optionnel)</label>
-                  <Input
-                    placeholder="ID du coéquipier"
-                    value={formData.partnerId}
-                    onChange={(e) => setFormData({ ...formData, partnerId: e.target.value })}
-                  />
+                  <label className="text-sm font-medium text-foreground">Coéquipier (optionnel)</label>
+                  <Input placeholder="ID du coéquipier" value={formData.partnerId} onChange={(e) => setFormData({ ...formData, partnerId: e.target.value })} />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium">Observations</label>
-                <Textarea
-                  placeholder="Notes sur la patrouille..."
-                  value={formData.observations}
-                  onChange={(e) => setFormData({ ...formData, observations: e.target.value })}
-                  rows={3}
-                />
+                <label className="text-sm font-medium text-foreground">Observations</label>
+                <Textarea placeholder="Notes sur la patrouille..." value={formData.observations} onChange={(e) => setFormData({ ...formData, observations: e.target.value })} rows={3} />
               </div>
-              <div className="flex items-center">
-                <Button type="submit" disabled={loading} style={{ marginRight: '32px' }}>
-                  {loading ? "Création..." : "Créer la patrouille"}
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setShowCreateForm(false)}
-                >
-                  Annuler
-                </Button>
+              <div className="flex gap-2">
+                <Button type="submit" disabled={loading}>{loading ? "Création..." : "Créer la patrouille"}</Button>
+                <Button type="button" variant="outline" onClick={() => setShowCreateForm(false)}>Annuler</Button>
               </div>
             </form>
           </CardContent>
         </Card>
       )}
 
-      {/* Active Patrols */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Patrouilles en cours</h2>
+        <h2 className="text-lg font-semibold text-foreground">Patrouilles en cours</h2>
         {activePatrols.map((patrol) => (
           <Card key={patrol.id}>
-            <CardContent className="p-6">
+            <CardContent className="p-4">
               <div className="flex items-start justify-between">
-                <div className="space-y-[5px]">
+                <div className="space-y-2">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-xl bg-accent/10">
-                      <Car className="h-5 w-5 text-accent" />
+                    <div className="p-2 rounded-lg bg-accent/10">
+                      <Car className="h-4 w-4 text-accent" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">{patrol.agent}</h3>
-                      <p className="text-sm text-gray-600">{patrol.sector}</p>
+                      <h3 className="font-semibold text-foreground">{patrol.agent}</h3>
+                      <p className="text-sm text-muted-foreground">{patrol.sector}</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">{patrol.type}</Badge>
                     <Badge variant="secondary">{patrol.vehicle}</Badge>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      <span>
-                        Depuis {format(patrol.startTime, "HH:mm", { locale: fr })}
-                      </span>
+                      <Clock className="h-3.5 w-3.5" />
+                      <span>Depuis {format(patrol.startTime, "HH:mm", { locale: fr })}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <MapPin className="h-4 w-4" />
+                      <MapPin className="h-3.5 w-3.5" />
                       <span>{patrol.observations}</span>
                     </div>
                   </div>
                 </div>
-                <Button variant="outline" size="sm">
-                  Terminer
-                </Button>
+                <Button variant="outline" size="sm">Terminer</Button>
               </div>
             </CardContent>
           </Card>
         ))}
       </div>
 
-      {/* Past Patrols */}
       <Card>
-        <CardHeader>
-          <CardTitle>Historique des patrouilles</CardTitle>
-        </CardHeader>
+        <CardHeader><CardTitle>Historique des patrouilles</CardTitle></CardHeader>
         <CardContent>
-          <p className="text-gray-500 text-center py-8">
-            L'historique des patrouilles sera affiché ici une fois la base de données connectée.
-          </p>
+          <p className="text-sm text-muted-foreground text-center py-8">L'historique des patrouilles sera affiché ici une fois la base de données connectée.</p>
         </CardContent>
       </Card>
     </div>
