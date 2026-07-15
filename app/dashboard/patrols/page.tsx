@@ -162,8 +162,8 @@ export default function PatrolsPage() {
                   rows={3}
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <Button type="submit" disabled={loading}>
+              <div className="flex items-center">
+                <Button type="submit" disabled={loading} style={{ marginRight: '32px' }}>
                   {loading ? "Création..." : "Créer la patrouille"}
                 </Button>
                 <Button

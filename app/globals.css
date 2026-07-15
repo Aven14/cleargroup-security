@@ -78,6 +78,12 @@ body {
   box-shadow: 0 8px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -2px rgb(0 0 0 / 0.1);
 }
 
-.btn-spacing {
-  margin-right: 1rem !important;
+/* Force button spacing with highest specificity */
+button:not(:last-child) {
+  margin-right: 32px !important;
+}
+
+/* Override for specific cases */
+form button:not(:last-child) {
+  margin-right: 32px !important;
 }
