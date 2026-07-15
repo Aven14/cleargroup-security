@@ -230,8 +230,8 @@ export default function DebriefingsPage() {
                   rows={2}
                 />
               </div>
-              <div className="flex items-center">
-                <Button type="submit" disabled={loading} style={{ marginRight: '24px' }}>
+              <div className="flex gap-2">
+                <Button type="submit" disabled={loading}>
                   {loading ? "Création..." : "Créer le rapport"}
                 </Button>
                 <Button
